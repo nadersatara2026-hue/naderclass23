@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آموزش‌یار | مدرسه آنلاین</title>
+<style>
+/* ===== فونت‌ها ===== */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+
+/* ===== متغیرهای تم روشن (پیش‌فرض) ===== */
+:root {
+  --bg: #f5f7fb;
+  --bg-soft: #ffffff;
+  --bg-card: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-soft: #eef2ff;
+  --shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+  --shadow-lg: 0 20px 60px rgba(2, 6, 23, 0.14);
+  --gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --footer-bg: #1e1b4b;
+  --footer-text: #c7d2fe;
+  --success: #10b981;
+  --radius: 18px;
+}
+
+/* ===== تم تاریک ===== */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-soft: #1e293b;
+  --bg-card: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --accent-soft: #312e81;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --footer-bg: #0b1120;
+  --footer-text: #94a3b8;
+}
+
+/* ===== رنگ‌بندی‌های مختلف ===== */
+[data-color="green"] {
+  --accent: #059669;
+  --accent-2: #10b981;
+  --accent-soft: #ecfdf5;
+  --gradient: linear-gradient(135deg, #059669, #10b981);
+}
+[data-color="green"][data-theme="dark"] {
+  --accent-soft: #064e3b;
+}
+[data-color="red"] {
+  --accent: #e11d48;
+  --accent-2: #f43f5e;
+  --accent-soft: #fff1f2;
+  --gradient: linear-gradient(135deg, #e11d48, #f43f5e);
+}
+[data-color="red"][data-theme="dark"] {
+  --accent-soft: #4c0519;
+}
+[data-color="orange"] {
+  --accent: #ea580c;
+  --accent-2: #f59e0b;
+  --accent-soft: #fff7ed;
+  --gradient: linear-gradient(135deg, #ea580c, #f59e0b);
+}
+[data-color="orange"][data-theme="dark"] {
+  --accent-soft: #431407;
+}
+[data-color="blue"] {
+  --accent: #2563eb;
+  --accent-2: #0ea5e9;
+  --accent-soft: #eff6ff;
+  --gradient: linear-gradient(135deg, #2563eb, #0ea5e9);
+}
+[data-color="blue"][data-theme="dark"] {
+  --accent-soft: #172554;
+}
+[data-color="pink"] {
+  --accent: #db2777;
+  --accent-2: #ec4899;
+  --accent-soft: #fdf2f8;
+  --gradient: linear-gradient(135deg, #db2777, #ec4899);
+}
+[data-color="pink"][data-theme="dark"] {
+  --accent-soft: #500724;
+}
+
+/* ===== پایه ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* ===== نوار بالا ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg-soft) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  font-size: 1.35rem;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--gradient);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow);
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+.nav-links a:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== دکمه‌ها ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 14px;
+  border: none;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.08);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: none;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: none;
+}
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+/* دکمه تم */
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.icon-btn .fa-sun { display: none; }
+[data-theme="dark"] .icon-btn .fa-sun { display: inline; }
+[data-theme="dark"] .icon-btn .fa-moon { display: none; }
+
+/* ===== انتخاب رنگ ===== */
+.color-dots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--bg-card);
+}
+.color-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+.color-dot:hover {
+  transform: scale(1.2);
+}
+.color-dot.active {
+  border-color: var(--text);
+  transform: scale(1.15);
+}
+.dot-purple { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.dot-green { background: linear-gradient(135deg, #059669, #10b981); }
+.dot-red { background: linear-gradient(135deg, #e11d48, #f43f5e); }
+.dot-orange { background: linear-gradient(135deg, #ea580c, #f59e0b); }
+.dot-blue { background: linear-gradient(135deg, #2563eb, #0ea5e9); }
+.dot-pink { background: linear-gradient(135deg, #db2777, #ec4899); }
+
+/* ===== منوی موبایل ===== */
+.hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ===== بخش قهرمان (Hero) ===== */
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 70px 24px 50px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.badge i {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3.1rem);
+  line-height: 1.35;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.hero h1 .highlight {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-stats {
+  display: flex;
+  gap: 34px;
+}
+.stat h3 {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+.stat span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* تصویر Hero */
+.hero-visual {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+.hero-card {
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-card);
+  border-radius: 26px;
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.hero-card .card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.hero-card .card-head img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.hero-card .card-head h4 {
+  font-size: 1rem;
+}
+.hero-card .card-head span {
+  font-size: 0.82rem;
+  color: var(--success);
+  font-weight: 700;
+}
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.progress-bar {
+  height: 10px;
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.progress-bar .fill {
+  height: 100%;
+  width: 74%;
+  background: var(--gradient);
+  border-radius: 20px;
+  animation: grow 1.5s ease;
+}
+@keyframes grow {
+  from { width: 0; }
+}
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.subject {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.subject i {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+}
+.subject .check {
+  margin-inline-start: auto;
+  color: var(--success);
+}
+.float-chip {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  animation: float 4s ease-in-out infinite;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.float-chip i {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+.chip-1 { top: -20px; right: -10px; }
+.chip-2 { bottom: 30px; left: -30px; animation-delay: 1.5s; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--gradient);
+  filter: blur(90px);
+  opacity: 0.18;
+  border-radius: 50%;
+  animation: blobMove 10s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes blobMove {
+  0%, 100% { transform: translate(-10px, 10px) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.15); }
+}
+
+/* ===== بخش‌ها ===== */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 44px;
+}
+.section-head .sub {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: block;
+}
+.section-head h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.section-head p {
+  color: var(--text-muted);
+}
+
+/* ===== کارت دوره‌ها ===== */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 24px;
+}
+.course-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+.course-card:hover::before {
+  transform: scaleX(1);
+}
+.course-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  transition: background 0.4s ease;
+}
+.course-card h3 {
+  font-size: 1.12rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.course-card p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+.course-meta {
+  display: flex;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 16px;
+}
+.course-meta i {
+  color: var(--accent);
+  margin-inline-end: 4px;
+}
+
+/* ===== ویژگی‌ها ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+.feature {
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow);
+}
+.feature:hover {
+  transform: translateY(-6px) rotate(1deg);
+  box-shadow: var(--shadow-lg);
+}
+.feature i {
+  font-size: 2rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  width: 74px;
+  height: 74px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 22px;
+  margin-bottom: 16px;
+  transition: background 0.4s ease;
+}
+.feature h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+.feature p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ===== معلمان ===== */
+.gradient-bg {
+  background: linear-gradient(to bottom, transparent, var(--accent-soft), transparent);
+  transition: background 0.4s ease;
+}
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+.teacher {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow);
+}
+.teacher:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  border: 4px solid var(--bg-card);
+  outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  transition: outline-color 0.4s ease;
+}
+.teacher h4 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+.teacher .role {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+.teacher p {
+  color: var(--text-muted);
+  font-size: 0.83rem;
+}
+
+/* ===== تماس ===== */
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  align-items: start;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+.contact-item:hover {
+  border-color: var(--accent);
+  transform: translateX(-6px);
+}
+.contact-item i {
+  font-size: 1.3rem;
+  color: var(--accent);
+  width: 48px;
+  height: 48px;
+  background: var(--accent-soft);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background 0.4s ease;
+}
+.contact-item h5 {
+  font-size: 0.95rem;
+}
+.contact-item span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.92rem;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.3s ease, background 0.4s ease, color 0.4s ease;
+}
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+form .btn {
+  margin-top: 4px;
+}
+.form-note {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-align: center;
+  display: none;
+}
+.form-note.show {
+  display: block;
+}
+
+/* ===== پاورقی ===== */
+footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  margin-top: 40px;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 24px 30px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 34px;
+}
+.footer-inner .logo {
+  color: #f1f5f9;
+  margin-bottom: 12px;
+}
+.footer-inner p {
+  font-size: 0.9rem;
+}
+.footer-col h5 {
+  color: #fff;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col a {
+  color: var(--footer-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+.footer-col a:hover {
+  color: #fff;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 18px;
+  font-size: 0.82rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== انیمیشن ورود ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== اسکرول‌بار ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 20px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 40px;
+  }
+  .hero p {
+    margin-inline: auto;
+  }
+  .hero-btns, .hero-stats {
+    justify-content: center;
+  }
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+  .hero-visual {
+    order: -1;
+  }
+  .chip-1 { right: 20px; }
+  .chip-2 { left: 20px; }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    left: 12px;
+    flex-direction: column;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: var(--shadow-lg);
+    display: none;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hamburger {
+    display: grid;
+    place-items: center;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= نوار بالا ================= -->
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">
+      <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+      آموزش‌یار
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">خانه</a></li>
+      <li><a href="#courses">دوره‌ها</a></li>
+      <li><a href="#features">امکانات</a></li>
+      <li><a href="#teachers">معلمان</a></li>
+      <li><a href="#contact">تماس با ما</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="color-dots" title="انتخاب رنگ">
+        <span class="color-dot dot-purple active" data-color="purple"></span>
+        <span class="color-dot dot-green" data-color="green"></span>
+        <span class="color-dot dot-red" data-color="red"></span>
+        <span class="color-dot dot-orange" data-color="orange"></span>
+        <span class="color-dot dot-blue" data-color="blue"></span>
+        <span class="color-dot dot-pink" data-color="pink"></span>
+      </div>
+      <button class="icon-btn" id="themeToggle" title="تغییر تم">
+        <i class="fa-solid fa-moon"></i>
+        <i class="fa-solid fa-sun"></i>
+      </button>
+      <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= قهرمان ================= -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="badge"><i></i> سال تحصیلی ۱۴۰۴ - ۱۴۰۵</span>
+    <h1>آیندهٔ فرزندان شما با <span class="highlight">آموزش نوین</span> ساخته می‌شود</h1>
+    <p>آموزش‌یار، مدرسه‌ای آنلاین و مدرن با بهترین معلمان، کتب درسی به‌روز و محیطی شاد برای یادگیری مهارت‌های قرن بیست‌ویکم. همین امروز ثبت‌نام کنید!</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn"><i class="fa-solid fa-rocket"></i> ثبت‌نام رایگان</a>
+      <a href="#courses" class="btn btn-ghost"><i class="fa-solid fa-book-open"></i> مشاهده دوره‌ها</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><h3>+۲٬۵۰۰</h3><span>دانش‌آموز فعال</span></div>
+      <div class="stat"><h3>+۱۲۰</h3><span>معلم مجرب</span></div>
+      <div class="stat"><h3>٪۹۸</h3><span>رضایت اولیا</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blob"></div>
+    <div class="hero-card">
+      <div class="card-head">
+        <span style="background:var(--accent-soft);border-radius:50%;width:48px;height:48px;display:grid;place-items:center;font-size:1.4rem;">🎓</span>
+        <div>
+          <h4>پیشرفت تحصیلی</h4>
+          <span><i class="fa-solid fa-circle-check"></i> ترم اول</span>
+        </div>
+      </div>
+      <div class="progress-row">
+        <span>نمره میانگین</span>
+        <span style="color:var(--accent);font-weight:800;">۱۸.۵</span>
+      </div>
+      <div class="progress-bar"><div class="fill"></div></div>
+      <div class="subject-list">
+        <div class="subject">
+          <i class="fa-solid fa-square-root-variable"></i> ریاضیات
+          <span class="check"><i class="fa-solid fa-check-circle"></i></span>
+        </div>
+        <div class="subject">
+          <i class="fa-solid fa-flask"></i> علوم تجربی
+          <span class="check"><i class="fa-solid fa-check-circle"></i></span>
+        </div>
+        <div class="subject">
+          <i class="fa-solid fa-code"></i> برنامه‌نویسی
+          <span class="check"><i class="fa-solid fa-check-circle"></i></span>
+        </div>
+      </div>
+    </div>
+    <span class="float-chip chip-1"><i class="fa-solid fa-trophy"></i> رتبه نخست المپیاد</span>
+    <span class="float-chip chip-2"><i class="fa-solid fa-users"></i> کلاس‌های تعاملی</span>
+  </div>
+</section>
+
+<!-- ================= دوره‌ها ================= -->
+<section id="courses">
+  <div class="section-head">
+    <span class="sub"><i class="fa-solid fa-graduation-cap"></i> دوره‌های آموزشی</span>
+    <h2>دوره‌های محبوب این ترم</h2>
+    <p>از دروس پایه تا مهارت‌های آینده؛ یادگیری را به سفری لذت‌بخش تبدیل می‌کنیم.</p>
+  </div>
+  <div class="courses-grid">
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-square-root-variable"></i></div>
+      <h3>ریاضیات پیشرفته</h3>
+      <p>آموزش مفاهیم ریاضی از پایه تا سطح المپیاد با مثال‌های کاربردی و جذاب.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۳۲ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> همه پایه‌ها</span>
+      </div>
+    </article>
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-flask"></i></div>
+      <h3>علوم و آزمایشگاه</h3>
+      <p>کاوش در دنیای علم با آزمایش‌های عملی و پروژه‌های گروهی هیجان‌انگیز.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۲۴ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> متوسطه اول</span>
+      </div>
+    </article>
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-code"></i></div>
+      <h3>برنامه‌نویسی و رباتیک</h3>
+      <p>یادگیری تفکر الگوریتمی، کدنویسی خلاقانه و ساخت ربات‌های ساده.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۲۸ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> مقدماتی تا پیشرفته</span>
+      </div>
+    </article>
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-language"></i></div>
+      <h3>زبان انگلیسی</h3>
+      <p>تقویت چهار مهارت اصلی با کلاس‌های مکالمه‌محور و محیطی کاملاً انگلیسی.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۳۰ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> همه سنین</span>
+      </div>
+    </article>
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-palette"></i></div>
+      <h3>هنر و خلاقیت</h3>
+      <p>پرورش استعدادهای هنری؛ نقاشی، خوشنویسی، موسیقی و کاردستی خلاقانه.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۲۰ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> دبستان</span>
+      </div>
+    </article>
+    <article class="course-card reveal">
+      <div class="course-icon"><i class="fa-solid fa-dumbbell"></i></div>
+      <h3>تربیت بدنی و سلامت</h3>
+      <p>ورزش صبحگاهی، مهارت‌های توپی و آموزش سبک زندگی سالم برای دانش‌آموزان.</p>
+      <div class="course-meta">
+        <span><i class="fa-regular fa-clock"></i> ۲۲ جلسه</span>
+        <span><i class="fa-solid fa-chart-line"></i> همه مقاطع</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= امکانات ================= -->
+<section id="features">
+  <div class="section-head">
+    <span class="sub"><i class="fa-solid fa-star"></i> چرا آموزش‌یار؟</span>
+    <h2>امکاناتی که مدرسه را جذاب می‌کند</h2>
+    <p>ما به یادگیری فعالانه و محیطی امن برای رشد فرزندان شما اهمیت می‌دهیم.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature reveal">
+      <i class="fa-solid fa-chalkboard-user"></i>
+      <h4>معلمان مجرب</h4>
+      <p>تیمی از بهترین معلمان با سابقه درخشان آموزشی</p>
+    </div>
+    <div class="feature reveal">
+      <i class="fa-solid fa-laptop-file"></i>
+      <h4>کلاس آنلاین</h4>
+      <p>آموزش حضوری و آنلاین با امکانات تعاملی</p>
+    </div>
+    <div class="feature reveal">
+      <i class="fa-solid fa-shield-heart"></i>
+      <h4>محیط امن</h4>
+      <p>نظارت کامل و محیطی امن برای دانش‌آموزان</p>
+    </div>
+    <div class="feature reveal">
+      <i class="fa-solid fa-ranking-star"></i>
+      <h4>کارنامه هوشمند</h4>
+      <p>گزارش پیشرفت تحصیلی به‌صورت لحظه‌ای برای اولیا</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= معلمان ================= -->
+<section id="teachers" class="gradient-bg">
+  <div class="section-head">
+    <span class="sub"><i class="fa-solid fa-users"></i> کادر آموزشی</span>
+    <h2>معلمان دوست‌داشتنی ما</h2>
+    <p>با متخصصانی آشنا شوید که عاشق آموزش و دانش‌آموزان هستند.</p>
+  </div>
+  <div class="teachers-grid">
+    <div class="teacher reveal">
+      <div class="avatar">د</div>
+      <h4>دکتر مریم احمدی</h4>
+      <span class="role">مدیر مدرسه</span>
+      <p>دکترای علوم تربیتی، ۱۸ سال سابقه مدیریت آموزشی</p>
+    </div>
+    <div class="teacher reveal">
+      <div class="avatar">ر</div>
+      <h4>آقای رضا کریمی</h4>
+      <span class="role">دبیر ریاضی</span>
+      <p>کارشناس ارشد ریاضیات، برگزیده جشنواره معلم نمونه</p>
+    </div>
+    <div class="teacher reveal">
+      <div class="avatar">س</div>
+      <h4>خانم سارا موسوی</h4>
+      <span class="role">دبیر علوم</span>
+      <p>فارغ‌التحصیل زیست‌شناسی، علاقه‌مند به آموزش عملی</p>
+    </div>
+    <div class="teacher reveal">
+      <div class="avatar">ح</div>
+      <h4>آقای حسین نادری</h4>
+      <span class="role">مدرس برنامه‌نویسی</span>
+      <p>مهندس نرم‌افزار، مربی رباتیک و هوش مصنوعی</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= تماس ================= -->
+<section id="contact">
+  <div class="section-head">
+    <span class="sub"><i class="fa-solid fa-envelope"></i> ارتباط با ما</span>
+    <h2>همین امروز شروع کنید</h2>
+    <p>برای ثبت‌نام یا دریافت مشاوره رایگان، فرم زیر را پر کنید.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <h5>آدرس</h5>
+          <span>تهران، خیابان آزادی، کوچه دانش، پلاک ۱۲</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <h5>تلفن تماس</h5>
+          <span dir="ltr" style="text-align:left;">۰۲۱-۸۸۷۷۶۶۵۵</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <h5>ایمیل</h5>
+          <span dir="ltr" style="text-align:left;">info@amoozeshyar.ir</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-clock"></i>
+        <div>
+          <h5>ساعات کاری</h5>
+          <span>شنبه تا پنجشنبه، ۸ صبح تا ۴ بعدازظهر</span>
+        </div>
+      </div>
+    </div>
+    <form id="contactForm">
+      <div class="field">
+        <label for="name">نام و نام خانوادگی</label>
+        <input type="text" id="name" placeholder="مثلاً: علی محمدی" required>
+      </div>
+      <div class="field">
+        <label for="grade">مقطع تحصیلی</label>
+        <select id="grade">
+          <option>دبستان</option>
+          <option>متوسطه اول</option>
+          <option>متوسطه دوم</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="phone">شماره تماس</label>
+        <input type="tel" id="phone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" required>
+      </div>
+      <div class="field">
+        <label for="message">پیام شما</label>
+        <textarea id="message" rows="4" placeholder="سوال یا درخواست خود را بنویسید..."></textarea>
+      </div>
+      <button type="submit" class="btn"><i class="fa-solid fa-paper-plane"></i> ارسال درخواست</button>
+      <p class="form-note" id="formNote"><i class="fa-solid fa-circle-check"></i> درخواست شما با موفقیت ثبت شد!</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= پاورقی ================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+        آموزش‌یار
+      </a>
+      <p>مدرسه‌ای مدرن و دوست‌داشتنی برای شکوفایی استعدادهای نسل آینده. یادگیری را اینجا لذت‌بخش کنیم! 🌱</p>
+    </div>
+    <div class="footer-col">
+      <h5>دسترسی سریع</h5>
+      <ul>
+        <li><a href="#home">خانه</a></li>
+        <li><a href="#courses">دوره‌ها</a></li>
+        <li><a href="#features">امکانات</a></li>
+        <li><a href="#teachers">معلمان</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>اطلاعات تماس</h5>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-phone"></i> ۰۲۱-۸۸۷۷۶۶۵۵</a></li>
+        <li><a href="#"><i class="fa-solid fa-envelope"></i> info@amoozeshyar.ir</a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i> اینستاگرام</a></li>
+        <li><a href="#"><i class="fa-brands fa-telegram"></i> تلگرام</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © ۱۴۰۴ آموزش‌یار — تمامی حقوق محفوظ است. ساخته شده با 💜
+  </div>
+</footer>
+
+<script>
+// ===== تغییر تم روشن / تاریک =====
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', savedTheme);
+
+themeBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', current);
+  localStorage.setItem('theme', current);
+});
+
+// ===== ذخیره رنگ انتخاب‌شده =====
+const savedColor = localStorage.getItem('color') || 'purple';
+root.setAttribute('data-color', savedColor);
+
+document.querySelectorAll('.color-dot').forEach(dot => {
+  if (dot.dataset.color === savedColor) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+    root.setAttribute('data-color', dot.dataset.color);
+    localStorage.setItem('color', dot.dataset.color);
+  });
+});
+
+// ===== منوی موبایل =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// ===== انیمیشن اسکرول =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== فرم تماس =====
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const note = document.getElementById('formNote');
+  note.classList.add('show');
+  e.target.reset();
+  setTimeout(() => note.classList.remove('show'), 4000);
+});
+</script>
+</body>
+</html>
